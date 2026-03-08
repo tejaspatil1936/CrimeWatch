@@ -1,0 +1,10 @@
+target/
+.idea/
+*.iml
+*.iws
+.vscode/
+.DS_Store
+*.log
+firebase-service-account.json
+!firebase-service-account.example.json
+application-local.properties
