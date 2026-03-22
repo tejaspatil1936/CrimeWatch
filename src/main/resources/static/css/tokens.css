@@ -1,0 +1,92 @@
+/* ==================================================================
+   CrimeWatch — Design Tokens
+   Editorial Charcoal + Amber. Do not add neon, gradients, or glow.
+   ================================================================== */
+
+:root {
+    /* --- Surfaces ------------------------------------------------ */
+    --bg-paper:        #f7f5f0;
+    --bg-surface:      #ffffff;
+    --bg-inset:        #efece5;
+    --bg-charcoal:     #1a1a1a;
+    --bg-charcoal-2:   #242424;
+
+    /* --- Ink (text) --------------------------------------------- */
+    --ink-primary:     #1a1a1a;
+    --ink-secondary:   #4a4a4a;
+    --ink-tertiary:    #78756f;
+    --ink-inverse:     #f7f5f0;
+
+    /* --- Accent (amber, used sparingly) ------------------------- */
+    --amber-50:        #fdf7ed;
+    --amber-100:       #fbecd1;
+    --amber-400:       #d99a3b;
+    --amber-600:       #b47527;
+    --amber-700:       #8a5918;
+    --amber-on-dark:   #e9a74a;
+
+    /* --- Severity / Semantic ------------------------------------ */
+    --sev-low:         #6b7c5b;
+    --sev-medium:      #8a7730;
+    --sev-high:        #a85a2b;
+    --sev-critical:    #8a2b2b;
+    --status-success:  #506b4a;
+    --status-error:    #8a2b2b;
+
+    /* --- Lines -------------------------------------------------- */
+    --rule-hair:       #d9d4ca;
+    --rule-soft:       #e8e3d9;
+    --rule-strong:     #1a1a1a;
+
+    /* --- Type --------------------------------------------------- */
+    --font-sans:       'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --font-serif:      'Source Serif 4', Georgia, 'Times New Roman', serif;
+    --font-mono:       ui-monospace, 'SF Mono', 'Cascadia Mono', Consolas, monospace;
+
+    --fs-display-1:    clamp(2.4rem, 4.2vw, 3.6rem);
+    --fs-display-2:    clamp(1.8rem, 2.8vw, 2.4rem);
+    --fs-h1:           1.75rem;
+    --fs-h2:           1.35rem;
+    --fs-h3:           1.1rem;
+    --fs-body:         1rem;
+    --fs-small:        0.875rem;
+    --fs-xs:           0.75rem;
+
+    --lh-tight:        1.2;
+    --lh-normal:       1.55;
+    --lh-loose:        1.7;
+
+    --fw-regular:      400;
+    --fw-medium:       500;
+    --fw-semibold:     600;
+    --fw-bold:         700;
+
+    /* --- Spacing (4-based) -------------------------------------- */
+    --s-1:  0.25rem;
+    --s-2:  0.5rem;
+    --s-3:  0.75rem;
+    --s-4:  1rem;
+    --s-5:  1.5rem;
+    --s-6:  2rem;
+    --s-7:  3rem;
+    --s-8:  4rem;
+    --s-9:  6rem;
+
+    /* --- Geometry ----------------------------------------------- */
+    --radius-0:  0;
+    --radius-1:  2px;
+    --radius-2:  4px;
+    --radius-3:  6px;
+
+    /* --- Elevation ---------------------------------------------- */
+    --shadow-0:  none;
+    --shadow-1:  0 1px 0 rgba(26,26,26,0.04);
+    --shadow-2:  0 1px 2px rgba(26,26,26,0.06), 0 0 0 1px var(--rule-hair);
+
+    /* --- Focus -------------------------------------------------- */
+    --focus-ring:  0 0 0 2px var(--bg-paper), 0 0 0 4px var(--amber-600);
+
+    /* --- Layout ------------------------------------------------- */
+    --container-width: 1180px;
+    --nav-height:      64px;
+}
