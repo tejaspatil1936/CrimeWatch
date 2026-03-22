@@ -1,0 +1,148 @@
+/* ---------------- Page head (common) ---------------- */
+.page-head {
+    margin-bottom: var(--s-7);
+    padding-bottom: var(--s-6);
+    border-bottom: 1px solid var(--rule-hair);
+}
+
+.dashboard-head {
+    margin-bottom: var(--s-5);
+}
+
+/* ---------------- Hero (landing) ---------------- */
+.hero {
+    background: var(--bg-charcoal);
+    color: var(--ink-inverse);
+    padding: var(--s-9) var(--s-5);
+    text-align: center;
+    margin: calc(-1 * var(--s-6)) calc(-1 * var(--s-5)) var(--s-7);
+}
+.hero h1 {
+    font-family: var(--font-serif);
+    font-size: var(--fs-display-1);
+    color: var(--ink-inverse);
+    margin-bottom: var(--s-4);
+}
+.hero p {
+    color: rgba(247,245,240,0.7);
+    font-size: 1.15rem;
+    max-width: 52ch;
+    margin: 0 auto var(--s-6);
+    line-height: var(--lh-loose);
+}
+.hero-actions {
+    display: flex;
+    gap: var(--s-4);
+    justify-content: center;
+}
+
+/* ---------------- Metric tiles (admin home) ---------------- */
+.metric-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: var(--s-5);
+    margin-bottom: var(--s-7);
+}
+.metric-tile {
+    background: var(--bg-surface);
+    border: 1px solid var(--rule-hair);
+    border-radius: var(--radius-2);
+    padding: var(--s-5);
+}
+.metric-tile .metric-label {
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-tertiary);
+    margin-bottom: var(--s-2);
+}
+.metric-tile .metric-value {
+    font-family: var(--font-serif);
+    font-size: var(--fs-display-2);
+    font-weight: var(--fw-bold);
+    color: var(--ink-primary);
+}
+
+/* ---------------- Chart containers ---------------- */
+.chart-container {
+    background: var(--bg-surface);
+    border: 1px solid var(--rule-hair);
+    border-radius: var(--radius-2);
+    padding: var(--s-5);
+    margin-bottom: var(--s-5);
+}
+.chart-container canvas {
+    max-height: 320px;
+}
+
+/* ---------------- Form actions ---------------- */
+.form-actions {
+    display: flex;
+    gap: var(--s-3);
+    align-items: center;
+    padding-top: var(--s-4);
+    border-top: 1px solid var(--rule-hair);
+}
+
+/* ---------------- Success page ---------------- */
+.success-box {
+    text-align: center;
+    padding: var(--s-8) var(--s-5);
+}
+.success-box .check-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: var(--status-success);
+    color: #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: var(--s-5);
+}
+
+/* ---------------- Error pages ---------------- */
+.error-page {
+    text-align: center;
+    padding: var(--s-9) var(--s-5);
+}
+.error-page .error-code {
+    font-family: var(--font-serif);
+    font-size: var(--fs-display-1);
+    font-weight: var(--fw-bold);
+    color: var(--ink-tertiary);
+    margin-bottom: var(--s-4);
+}
+
+/* ---------------- Auth pages ---------------- */
+.auth-card {
+    max-width: 420px;
+    margin: var(--s-8) auto;
+    background: var(--bg-surface);
+    border: 1px solid var(--rule-hair);
+    border-radius: var(--radius-2);
+    padding: var(--s-7) var(--s-6);
+}
+.auth-card h1 {
+    text-align: center;
+    margin-bottom: var(--s-6);
+}
+.auth-error {
+    background: #fdf2f2;
+    border: 1px solid #e8c4c4;
+    color: var(--status-error);
+    padding: var(--s-3) var(--s-4);
+    border-radius: var(--radius-2);
+    font-size: var(--fs-small);
+    margin-bottom: var(--s-5);
+}
+.auth-success {
+    background: #f2fdf4;
+    border: 1px solid #c4e8c8;
+    color: var(--status-success);
+    padding: var(--s-3) var(--s-4);
+    border-radius: var(--radius-2);
+    font-size: var(--fs-small);
+    margin-bottom: var(--s-5);
+}
