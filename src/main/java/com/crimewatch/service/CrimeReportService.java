@@ -79,6 +79,16 @@ public class CrimeReportService {
         return reportRepo.findByStatus(ReportStatus.PENDING);
     }
 
+    public List<CrimeReport> findActive() {
+        List<CrimeReport> assigned   = reportRepo.findByStatus(ReportStatus.ASSIGNED);
+        List<CrimeReport> inProgress = reportRepo.findByStatus(ReportStatus.IN_PROGRESS);
+        List<CrimeReport> combined   = new java.util.ArrayList<>();
+        combined.addAll(assigned);
+        combined.addAll(inProgress);
+        combined.sort((a, b) -> Long.compare(b.getReportedAt(), a.getReportedAt()));
+        return combined;
+    }
+
     public List<CrimeReport> findByZone(String zoneId) {
         return reportRepo.findByZoneId(zoneId);
     }

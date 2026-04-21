@@ -27,6 +27,7 @@ public class DashboardController {
     @GetMapping
     public String home(Authentication auth, Model model) {
         model.addAttribute("pending", reportService.findPending());
+        model.addAttribute("active", reportService.findActive());
         model.addAttribute("officerId", auth.getName());
         model.addAttribute("firebaseDatabaseUrl", firebaseDatabaseUrl);
         model.addAttribute("firebaseProjectId", firebaseProjectId);

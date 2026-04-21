@@ -37,39 +37,66 @@
         </header>
         <table class="data-table">
             <thead>
-                <tr><th>Title</th><th>Severity</th><th>Time</th><th>Status</th><th>Actions</th></tr>
+                <tr><th>Title</th><th>Severity</th><th>Time</th><th>Actions</th></tr>
             </thead>
             <tbody>
                 <c:forEach var="r" items="${pending}">
-                    <tr id="row-${r.reportId}">
+                    <tr>
                         <td><c:out value="${r.title}"/></td>
                         <td><span class="sev sev-${r.severity}"><c:out value="${r.severity}"/></span></td>
                         <td><fmt:formatDate value="${r.reportedAtDate}" pattern="HH:mm dd MMM"/></td>
-                        <td><span class="sev sev-${r.severity}" id="status-${r.reportId}"><c:out value="${r.status}"/></span></td>
                         <td class="action-cell">
                             <form method="post" action="<c:url value='/dashboard/reports/${r.reportId}/assign'/>" style="display:inline">
                                 <sec:csrfInput/>
                                 <button class="btn btn-sm btn-secondary">Assign to me</button>
                             </form>
-                            <form method="post" action="<c:url value='/dashboard/reports/${r.reportId}/status'/>" style="display:inline;margin-left:4px">
+                        </td>
+                    </tr>
+                </c:forEach>
+                <c:if test="${empty pending}">
+                    <tr><td colspan="4" class="empty">No pending reports.</td></tr>
+                </c:if>
+            </tbody>
+        </table>
+    </div>
+
+    <%-- ── Active reports (assigned / in-progress) ── --%>
+    <c:if test="${not empty active}">
+    <div class="card" style="grid-column:2">
+        <header class="card-head">
+            <h2>Active reports</h2>
+            <span class="count-pill"><c:out value="${active.size()}"/></span>
+        </header>
+        <table class="data-table">
+            <thead>
+                <tr><th>Title</th><th>Severity</th><th>Status</th><th>Time</th><th>Update status</th></tr>
+            </thead>
+            <tbody>
+                <c:forEach var="r" items="${active}">
+                    <tr>
+                        <td><c:out value="${r.title}"/></td>
+                        <td><span class="sev sev-${r.severity}"><c:out value="${r.severity}"/></span></td>
+                        <td><span class="sev sev-${r.severity}"><c:out value="${r.status}"/></span></td>
+                        <td><fmt:formatDate value="${r.reportedAtDate}" pattern="HH:mm dd MMM"/></td>
+                        <td class="action-cell">
+                            <form method="post" action="<c:url value='/dashboard/reports/${r.reportId}/status'/>">
                                 <sec:csrfInput/>
                                 <select name="status" class="status-select" onchange="this.form.submit()">
-                                    <option value="">Update status…</option>
-                                    <option value="PENDING">Pending</option>
-                                    <option value="ASSIGNED">Assigned</option>
-                                    <option value="IN_PROGRESS">In Progress</option>
-                                    <option value="RESOLVED">Resolved</option>
+                                    <option value="">Change status…</option>
+                                    <option value="PENDING">↩ Back to Pending</option>
+                                    <option value="ASSIGNED" ${r.status == 'ASSIGNED' ? 'selected' : ''}>Assigned</option>
+                                    <option value="IN_PROGRESS" ${r.status == 'IN_PROGRESS' ? 'selected' : ''}>In Progress</option>
+                                    <option value="RESOLVED">✓ Resolved</option>
+                                    <option value="DISMISSED">✗ Dismissed</option>
                                 </select>
                             </form>
                         </td>
                     </tr>
                 </c:forEach>
-                <c:if test="${empty pending}">
-                    <tr><td colspan="5" class="empty">No pending reports.</td></tr>
-                </c:if>
             </tbody>
         </table>
     </div>
+    </c:if>
 </div>
 
 <style>
