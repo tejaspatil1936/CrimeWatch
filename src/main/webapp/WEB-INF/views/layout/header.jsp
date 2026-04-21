@@ -18,5 +18,5 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<jsp:include page="nav.jsp"/>
+<jsp:include page="/WEB-INF/views/layout/nav.jsp"/>
 <main class="container">

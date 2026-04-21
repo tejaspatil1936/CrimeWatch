@@ -11,6 +11,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.DispatcherTypeRequestMatcher;
+import jakarta.servlet.DispatcherType;
 
 @Configuration
 @EnableWebSecurity
@@ -35,12 +37,15 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
+            .headers(h -> h.frameOptions(f -> f.sameOrigin()))
             .authorizeHttpRequests(auth -> auth
+                .dispatcherTypeMatchers(DispatcherType.FORWARD, DispatcherType.ERROR).permitAll()
                 .requestMatchers("/", "/login", "/register", "/post-login",
                                  "/css/**", "/js/**", "/img/**", "/fonts/**",
                                  "/report/new", "/report/submit",
                                  "/map", "/api/public/**",
-                                 "/error", "/error/**").permitAll()
+                                 "/error", "/error/**",
+                                 "/WEB-INF/**").permitAll()
                 .requestMatchers("/admin/**").hasRole("ADMIN")
                 .requestMatchers("/dashboard/**").hasRole("OFFICER")
                 .requestMatchers("/report/my").authenticated()
