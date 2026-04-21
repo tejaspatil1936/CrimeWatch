@@ -36,10 +36,11 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/", "/login", "/register",
-                                 "/css/**", "/js/**", "/img/**",
+                .requestMatchers("/", "/login", "/register", "/post-login",
+                                 "/css/**", "/js/**", "/img/**", "/fonts/**",
                                  "/report/new", "/report/submit",
-                                 "/map", "/api/public/**").permitAll()
+                                 "/map", "/api/public/**",
+                                 "/error", "/error/**").permitAll()
                 .requestMatchers("/admin/**").hasRole("ADMIN")
                 .requestMatchers("/dashboard/**").hasRole("OFFICER")
                 .requestMatchers("/report/my").authenticated()
