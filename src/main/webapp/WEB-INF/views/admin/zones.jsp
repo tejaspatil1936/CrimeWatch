@@ -52,7 +52,15 @@
                 <td><c:out value="${z.city}"/></td>
                 <td><c:out value="${z.latCenter}"/></td>
                 <td><c:out value="${z.lngCenter}"/></td>
-                <td><c:out value="${z.escalationThreshold}"/></td>
+                <td>
+                    <form method="post" action="<c:url value='/admin/zones/${z.zoneId}/threshold'/>" class="threshold-form">
+                        <sec:csrfInput/>
+                        <input type="number" name="threshold" value="${z.escalationThreshold}"
+                               min="1" max="100" class="threshold-input"
+                               title="Press Enter to save"/>
+                        <button type="submit" class="btn btn-sm btn-primary">Save</button>
+                    </form>
+                </td>
                 <td>
                     <form method="post" action="<c:url value='/admin/zones/${z.zoneId}/delete'/>">
                         <sec:csrfInput/>
@@ -63,5 +71,25 @@
         </c:forEach>
     </tbody>
 </table>
+
+<style>
+.threshold-form { display: flex; align-items: center; gap: var(--s-2); }
+.threshold-input {
+    width: 70px;
+    font-family: var(--font-sans);
+    font-size: var(--fs-small);
+    padding: 5px 8px;
+    border: 1px solid var(--rule-hair);
+    border-radius: var(--radius-2);
+    background: var(--bg-surface);
+    color: var(--ink-primary);
+    text-align: center;
+}
+.threshold-input:focus {
+    outline: none;
+    border-color: var(--amber-600);
+    box-shadow: 0 0 0 3px var(--amber-100);
+}
+</style>
 
 <%@ include file="/WEB-INF/views/layout/footer.jsp" %>

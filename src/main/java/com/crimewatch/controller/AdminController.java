@@ -5,6 +5,8 @@ import com.crimewatch.enums.Role;
 import com.crimewatch.repository.EscalationRepository;
 import com.crimewatch.service.*;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.ResponseEntity;
@@ -54,6 +56,12 @@ public class AdminController {
     @PostMapping("/zones/{id}/delete")
     public String deleteZone(@PathVariable String id) {
         zoneService.deleteById(id);
+        return "redirect:/admin/zones";
+    }
+
+    @PostMapping("/zones/{id}/threshold")
+    public String updateThreshold(@PathVariable String id, @RequestParam @Min(1) @Max(100) int threshold) {
+        zoneService.updateThreshold(id, threshold);
         return "redirect:/admin/zones";
     }
 
