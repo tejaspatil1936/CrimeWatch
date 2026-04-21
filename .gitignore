@@ -8,3 +8,4 @@ target/
 firebase-service-account.json
 !firebase-service-account.example.json
 application-local.properties
+*firebase-adminsdk*.json
