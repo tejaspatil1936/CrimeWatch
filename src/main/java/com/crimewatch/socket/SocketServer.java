@@ -22,6 +22,9 @@ public class SocketServer {
     @Value("${socket.server.port}")
     private int port;
 
+    @Value("${socket.server.enabled:true}")
+    private boolean enabled;
+
     private final List<PrintWriter> clients = new CopyOnWriteArrayList<>();
     private volatile boolean running = true;
     private ServerSocket serverSocket;
@@ -29,6 +32,10 @@ public class SocketServer {
 
     @PostConstruct
     public void start() {
+        if (!enabled) {
+            log.info("Socket server disabled via config");
+            return;
+        }
         acceptThread = new Thread(this::runAcceptLoop, "cw-socket-accept");
         acceptThread.setDaemon(true);
         acceptThread.start();
