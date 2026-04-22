@@ -3,17 +3,10 @@ WORKDIR /app
 COPY pom.xml .
 RUN mvn dependency:go-offline -q -B
 COPY src ./src
-RUN mvn clean package -DskipTests -q -B \
-    -Dmaven.compiler.fork=false \
-    -XX:+TieredCompilation -XX:TieredStopAtLevel=1
+RUN mvn clean package -DskipTests -q -B
 
 FROM eclipse-temurin:17-jre-jammy
 WORKDIR /app
 COPY --from=build /app/target/crimewatch-1.0.0.jar app.jar
 EXPOSE 10000
-ENTRYPOINT ["java", \
-  "-Xmx400m", \
-  "-Xms128m", \
-  "-XX:+UseSerialGC", \
-  "-Djava.security.egd=file:/dev/./urandom", \
-  "-jar", "app.jar"]
+ENTRYPOINT ["java", "-Xmx400m", "-Xms128m", "-XX:+UseSerialGC", "-jar", "app.jar"]
