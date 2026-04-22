@@ -1,0 +1,8 @@
+target/
+.git/
+.idea/
+*.iml
+*.log
+firebase-service-account.json
+*firebase-adminsdk*.json
+.vscode/
