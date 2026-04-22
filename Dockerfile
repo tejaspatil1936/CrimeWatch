@@ -7,6 +7,6 @@ RUN mvn clean package -DskipTests -q -B
 
 FROM eclipse-temurin:17-jre-jammy
 WORKDIR /app
-COPY --from=build /app/target/crimewatch-1.0.0.jar app.jar
+COPY --from=build /app/target/crimewatch-1.0.0.war app.war
 EXPOSE 10000
-ENTRYPOINT ["java", "-Xmx400m", "-Xms128m", "-XX:+UseSerialGC", "-jar", "app.jar"]
+ENTRYPOINT ["java", "-Xmx400m", "-Xms128m", "-XX:+UseSerialGC", "-jar", "app.war"]
