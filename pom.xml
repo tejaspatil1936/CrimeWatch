@@ -22,7 +22,7 @@
         <java.version>17</java.version>
         <firebase-admin.version>9.2.0</firebase-admin.version>
         <opencsv.version>5.9</opencsv.version>
-        <jstl.version>3.0.0</jstl.version>
+        <jstl.version>3.0.1</jstl.version>
     </properties>
 
     <dependencies>
@@ -80,13 +80,15 @@
             <artifactId>spring-security-taglibs</artifactId>
         </dependency>
 
-        <!-- Dev tools -->
+        <!-- Dev tools - local only -->
+        <!--
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
             <optional>true</optional>
         </dependency>
+        -->
 
         <!-- Testing -->
         <dependency>
