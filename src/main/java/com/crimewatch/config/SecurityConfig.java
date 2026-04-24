@@ -41,6 +41,7 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 .dispatcherTypeMatchers(DispatcherType.FORWARD, DispatcherType.ERROR).permitAll()
                 .requestMatchers("/", "/login", "/register", "/post-login",
+                                 "/healthz",
                                  "/css/**", "/js/**", "/img/**", "/fonts/**",
                                  "/report/new", "/report/submit",
                                  "/map", "/api/public/**",
